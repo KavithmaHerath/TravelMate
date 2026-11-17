@@ -1,6 +1,8 @@
 
+// Import React hooks for managing component state and side effects
 import { useEffect, useState } from "react";
 
+// Import React Router components and hooks for navigation and routing
 import {
     BrowserRouter,
     Routes,
@@ -11,6 +13,7 @@ import {
     useLocation
 } from "react-router-dom";
 
+// Import icons used throughout the TravelMate application
 import {
     Compass,
     MapPin,
@@ -34,6 +37,7 @@ import {
     CheckCircle2
 } from "lucide-react";
 
+// Import API functions for destinations and user authentication
 import {
     getDestinations,
     registerUser,
@@ -44,19 +48,24 @@ import {
     clearAuth
 } from "./services/api";
 
+// Import application page components
 import Itineraries from "./pages/Itineraries";
 import DestinationDetails from "./pages/DestinationDetails";
 import DestinationCompare from "./pages/DestinationCompare";
 import About from "./pages/About";
 
+// Import the main application stylesheet
 import "./App.css";
 
+// Main background image displayed in the home page hero section
 const HERO_IMAGE =
     "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1800&q=85";
 
+// Fallback image used when a destination image cannot be loaded
 const FALLBACK_IMAGE =
     "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80";
 
+// Destination categories and their corresponding icons
 const categories = [
     { name: "All Places", icon: Compass },
     { name: "Beach", icon: Waves },
@@ -65,6 +74,7 @@ const categories = [
     { name: "Adventure", icon: Mountain }
 ];
 
+// List of all 25 districts in Sri Lanka
 const districts = [
     "Colombo",
     "Gampaha",
@@ -93,9 +103,11 @@ const districts = [
     "Kegalle"
 ];
 
+// Component that scrolls the page to the top when the URL path changes
 function ScrollToTop() {
     const { pathname } = useLocation();
 
+    // Monitor route changes and scroll to the top of the page
     useEffect(() => {
         window.scrollTo({
             top: 0,
@@ -111,12 +123,16 @@ function ScrollToTop() {
 // NAVBAR
 // --------------------------------------------------
 
+// Navigation bar component displaying links and user actions
 function Navbar({ user, logout }) {
+
+    // State for opening and closing the mobile navigation menu
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
         <header className="navbar">
 
+            {/* TravelMate logo and home navigation link */}
             <Link
                 to="/"
                 className="brand"
@@ -131,6 +147,7 @@ function Navbar({ user, logout }) {
                 </span>
             </Link>
 
+            {/* Button for opening or closing the mobile menu */}
             <button
                 className="mobile-menu"
                 onClick={() => setMenuOpen(!menuOpen)}
@@ -139,8 +156,10 @@ function Navbar({ user, logout }) {
                 {menuOpen ? <X /> : <Menu />}
             </button>
 
+            {/* Navigation links and authentication options */}
             <nav className={menuOpen ? "nav-links open" : "nav-links"}>
 
+                {/* Home page link */}
                 <NavLink
                     to="/"
                     end
@@ -149,6 +168,7 @@ function Navbar({ user, logout }) {
                     Home
                 </NavLink>
 
+                {/* About page link */}
                 <NavLink
                     to="/about"
                     onClick={() => setMenuOpen(false)}
@@ -156,6 +176,7 @@ function Navbar({ user, logout }) {
                     About
                 </NavLink>
 
+                {/* Destinations page link */}
                 <NavLink
                     to="/destinations"
                     onClick={() => setMenuOpen(false)}
@@ -163,6 +184,7 @@ function Navbar({ user, logout }) {
                     Destinations
                 </NavLink>
 
+                {/* Destination comparison page link */}
                 <NavLink
                     to="/compare"
                     onClick={() => setMenuOpen(false)}
@@ -170,6 +192,7 @@ function Navbar({ user, logout }) {
                     Compare
                 </NavLink>
 
+                {/* Display dashboard and logout options for logged-in users */}
                 {user ? (
                     <>
                         <NavLink
@@ -179,6 +202,7 @@ function Navbar({ user, logout }) {
                             My Dashboard
                         </NavLink>
 
+                        {/* Logout button for authenticated users */}
                         <button
                             className="nav-logout"
                             onClick={() => {
@@ -191,6 +215,7 @@ function Navbar({ user, logout }) {
                         </button>
                     </>
                 ) : (
+                    /* Display login link when the user is not logged in */
                     <Link
                         to="/login"
                         className="nav-login"
@@ -209,26 +234,33 @@ function Navbar({ user, logout }) {
 // DESTINATION CARD
 // --------------------------------------------------
 
+// Reusable component for displaying an individual destination
 function DestinationCard({ destination }) {
+
+    // State for tracking whether the destination is marked as saved
     const [saved, setSaved] = useState(false);
 
     return (
         <article className="destination-card">
 
+            {/* Destination image and category information */}
             <div className="destination-image">
 
                 <img
                     src={destination.image || FALLBACK_IMAGE}
                     alt={destination.name}
                     onError={(e) => {
+                        // Display a fallback image if the original image fails
                         e.currentTarget.src = FALLBACK_IMAGE;
                     }}
                 />
 
+                {/* Display the destination category */}
                 <span className="category-tag">
                     {destination.category}
                 </span>
 
+                {/* Button for marking the destination as saved */}
                 <button
                     className={`heart-button ${saved ? "saved" : ""}`}
                     onClick={() => setSaved(!saved)}
@@ -242,17 +274,22 @@ function DestinationCard({ destination }) {
 
             </div>
 
+            {/* Destination name, location, description, and navigation link */}
             <div className="destination-info">
 
+                {/* Display the destination location */}
                 <div className="destination-location">
                     <MapPin size={14} />
                     {destination.location}
                 </div>
 
+                {/* Display the destination name */}
                 <h3>{destination.name}</h3>
 
+                {/* Display a short destination description */}
                 <p>{destination.description}</p>
 
+                {/* Navigate to the full destination details page */}
                 <Link
                     to={`/destinations/${destination.id}`}
                     className="card-link"
@@ -270,15 +307,23 @@ function DestinationCard({ destination }) {
 // HOME PAGE
 // --------------------------------------------------
 
+// Home page component displaying featured destinations and introduction
 function Home({ destinations, loading, error }) {
+
+    // State for the destination search input
     const [search, setSearch] = useState("");
+
+    // React Router navigation function
     const navigate = useNavigate();
 
+    // Select the first four destinations for the featured section
     const featured = destinations.slice(0, 4);
 
+    // Handle submission of the home page search form
     const handleSearch = (e) => {
         e.preventDefault();
 
+        // Navigate to the destinations page with the search query
         navigate(
             `/destinations?search=${encodeURIComponent(search)}`
         );
@@ -287,35 +332,43 @@ function Home({ destinations, loading, error }) {
     return (
         <>
 
+            {/* Main hero section of the home page */}
             <section className="hero">
 
+                {/* Background image */}
                 <img
                     className="hero-background"
                     src={HERO_IMAGE}
                     alt=""
                 />
 
+                {/* Overlay used to improve text visibility */}
                 <div className="hero-overlay"></div>
 
+                {/* Main hero content */}
                 <div className="hero-content">
 
+                    {/* Introductory badge */}
                     <div className="hero-badge">
                         <Sparkles size={15} />
                         YOUR NEXT ADVENTURE STARTS HERE
                     </div>
 
+                    {/* Main welcome heading */}
                     <h1>
                         Discover the magic
                         <br />
                         of <span>Sri Lanka.</span>
                     </h1>
 
+                    {/* Introduction to TravelMate */}
                     <p>
                         From golden beaches to misty mountains,
                         discover unforgettable places and plan
                         your perfect island adventure.
                     </p>
 
+                    {/* Search form for finding destinations */}
                     <form
                         className="hero-search"
                         onSubmit={handleSearch}
@@ -333,6 +386,7 @@ function Home({ destinations, loading, error }) {
                         </button>
                     </form>
 
+                    {/* Highlights displayed below the search form */}
                     <div className="hero-trust">
 
                         <span>
@@ -349,6 +403,7 @@ function Home({ destinations, loading, error }) {
 
                 </div>
 
+                {/* Small location information at the bottom of the hero */}
                 <div className="hero-bottom">
                     <span>THE PEARL OF THE INDIAN OCEAN</span>
                     <span>06°55' N — 79°51' E</span>
@@ -356,6 +411,7 @@ function Home({ destinations, loading, error }) {
 
             </section>
 
+            {/* Section displaying TravelMate highlights */}
             <section className="stats-section">
 
                 <div className="stat-item">
@@ -392,6 +448,7 @@ function Home({ destinations, loading, error }) {
 
             </section>
 
+            {/* Featured destinations section */}
             <section className="section destinations-section">
 
                 <div className="section-heading">
@@ -410,6 +467,7 @@ function Home({ destinations, loading, error }) {
                         </p>
                     </div>
 
+                    {/* Link to view all destinations */}
                     <Link
                         to="/destinations"
                         className="outline-button"
@@ -420,6 +478,7 @@ function Home({ destinations, loading, error }) {
 
                 </div>
 
+                {/* Display loading, error, destination cards, or empty state */}
                 {loading ? (
                     <div className="loading-state">
                         <LoaderCircle className="spin" />
@@ -430,6 +489,7 @@ function Home({ destinations, loading, error }) {
                 ) : featured.length ? (
                     <div className="destination-grid">
 
+                        {/* Generate a destination card for each featured destination */}
                         {featured.map((destination) => (
                             <DestinationCard
                                 key={destination.id}
@@ -439,6 +499,7 @@ function Home({ destinations, loading, error }) {
 
                     </div>
                 ) : (
+                    /* Display a message when no destinations are available */
                     <div className="empty-state">
                         No destinations available yet.
                     </div>
@@ -448,8 +509,10 @@ function Home({ destinations, loading, error }) {
 
             {/* HOME PAGE ABOUT SECTION */}
 
+            {/* Introduction to the purpose and benefits of TravelMate */}
             <section className="about-section" id="about">
 
+                {/* Image and supporting message */}
                 <div className="about-image">
 
                     <img
@@ -464,6 +527,7 @@ function Home({ destinations, loading, error }) {
 
                 </div>
 
+                {/* About TravelMate text and feature highlights */}
                 <div className="about-content">
 
                     <span className="eyebrow">
@@ -482,6 +546,7 @@ function Home({ destinations, loading, error }) {
                         and start planning a journey that is uniquely yours.
                     </p>
 
+                    {/* Main benefits of using TravelMate */}
                     <div className="about-points">
 
                         <div>
@@ -501,6 +566,7 @@ function Home({ destinations, loading, error }) {
 
                     </div>
 
+                    {/* Navigate to the separate About page */}
                     <Link
                         to="/about"
                         className="primary-button"
@@ -513,6 +579,7 @@ function Home({ destinations, loading, error }) {
 
             </section>
 
+            {/* Final call-to-action section on the home page */}
             <section className="cta-section">
 
                 <span className="eyebrow">
@@ -527,6 +594,7 @@ function Home({ destinations, loading, error }) {
                     Find your favourite destinations and start planning.
                 </p>
 
+                {/* Navigate to the destinations page */}
                 <Link
                     to="/destinations"
                     className="cta-button"
@@ -545,32 +613,41 @@ function Home({ destinations, loading, error }) {
 // DESTINATIONS PAGE WITH DISTRICT FILTER
 // --------------------------------------------------
 
+// Component displaying destinations with search and filtering options
 function Destinations({ destinations, loading }) {
 
+    // Initialize search from the URL query parameter when available
     const [search, setSearch] = useState(
         () => new URLSearchParams(window.location.search).get("search") || ""
     );
 
+    // State for the selected destination category and district
     const [category, setCategory] = useState("All Places");
     const [district, setDistrict] = useState("");
 
+    // Filter destinations based on the selected search and filter values
     const filtered = destinations.filter((destination) => {
 
+        // Convert the search text to lowercase and remove extra spaces
         const searchText = search.trim().toLowerCase();
 
+        // Check whether the destination name or location matches the search
         const matchesSearch =
             !searchText ||
             destination.name?.toLowerCase().includes(searchText) ||
             destination.location?.toLowerCase().includes(searchText);
 
+        // Check whether the selected category matches
         const matchesCategory =
             category === "All Places" ||
             destination.category === category;
 
+        // Check whether the selected district matches
         const matchesDistrict =
             district === "" ||
             destination.district === district;
 
+        // Return destinations that match all selected conditions
         return (
             matchesSearch &&
             matchesCategory &&
@@ -578,6 +655,7 @@ function Destinations({ destinations, loading }) {
         );
     });
 
+    // Reset the search, category, district, and URL query parameter
     const clearFilters = () => {
         setSearch("");
         setCategory("All Places");
@@ -593,6 +671,7 @@ function Destinations({ destinations, loading }) {
     return (
         <main className="page-container">
 
+            {/* Page heading and introduction */}
             <div className="page-heading">
 
                 <span className="eyebrow">
@@ -609,8 +688,10 @@ function Destinations({ destinations, loading }) {
 
             </div>
 
+            {/* Main destination search and filtering panel */}
             <div className="filter-panel">
 
+                {/* Search destinations by name or location */}
                 <div className="destination-search">
 
                     <Search size={20} />
@@ -623,6 +704,7 @@ function Destinations({ destinations, loading }) {
 
                 </div>
 
+                {/* District selection dropdown */}
                 <div className="district-filter">
 
                     <label htmlFor="district-select">
@@ -639,6 +721,7 @@ function Destinations({ destinations, loading }) {
                             Choose a district to explore
                         </option>
 
+                        {/* Generate dropdown options from the districts array */}
                         {districts.map((item) => (
                             <option key={item} value={item}>
                                 {item} District
@@ -648,6 +731,7 @@ function Destinations({ destinations, loading }) {
 
                 </div>
 
+                {/* Category buttons for filtering destinations */}
                 <div className="category-list">
 
                     {categories.map(({ name, icon: Icon }) => (
@@ -669,6 +753,7 @@ function Destinations({ destinations, loading }) {
 
                 </div>
 
+                {/* Button for resetting all destination filters */}
                 <button
                     className="clear-destination-filters"
                     onClick={clearFilters}
@@ -678,6 +763,7 @@ function Destinations({ destinations, loading }) {
 
             </div>
 
+            {/* Display loading, filtered results, or an empty state */}
             {loading ? (
 
                 <div className="loading-state">
@@ -689,11 +775,13 @@ function Destinations({ destinations, loading }) {
 
                 <>
 
+                    {/* Display the number of matching destinations */}
                     <p className="results-count">
                         {filtered.length} destinations found
                         {district ? ` in ${district} District` : ""}
                     </p>
 
+                    {/* Display the filtered destination cards */}
                     <div className="destination-grid">
 
                         {filtered.map((destination) => (
@@ -711,6 +799,7 @@ function Destinations({ destinations, loading }) {
 
             ) : (
 
+                /* Empty state displayed when no destinations match */
                 <div className="empty-state">
 
                     <Compass size={40} />
@@ -740,44 +829,57 @@ function Destinations({ destinations, loading }) {
 // LOGIN AND REGISTER
 // --------------------------------------------------
 
+// Shared authentication component for login and registration
 function AuthPage({ mode, onLogin }) {
 
+    // Navigation function used after successful authentication
     const navigate = useNavigate();
 
+    // Determine whether the current page is for registration
     const isRegister = mode === "register";
 
+    // State variables for authentication form fields
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    // State variables for form loading and error messages
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
+    // Handle login or registration form submission
     const handleSubmit = async (e) => {
 
         e.preventDefault();
 
+        // Clear previous errors and activate the loading state
         setError("");
         setLoading(true);
 
         try {
 
+            // Call the appropriate API function based on the page mode
             const result = isRegister
                 ? await registerUser({ name, email, password })
                 : await loginUser({ email, password });
 
+            // Save the authentication token and user information
             saveAuth(result.token, result.user);
 
+            // Update the application user state
             onLogin(result.user);
 
+            // Navigate to the dashboard after successful authentication
             navigate("/dashboard");
 
         } catch (err) {
 
+            // Display the authentication error message
             setError(err.message);
 
         } finally {
 
+            // Stop the loading state after authentication completes
             setLoading(false);
 
         }
@@ -787,6 +889,7 @@ function AuthPage({ mode, onLogin }) {
 
         <main className="auth-page">
 
+            {/* Left-side visual section of the authentication page */}
             <div className="auth-visual">
 
                 <img
@@ -796,6 +899,7 @@ function AuthPage({ mode, onLogin }) {
 
                 <div className="auth-visual-overlay"></div>
 
+                {/* Introductory message displayed over the image */}
                 <div className="auth-visual-content">
 
                     <Compass size={38} />
@@ -815,14 +919,17 @@ function AuthPage({ mode, onLogin }) {
 
             </div>
 
+            {/* Right-side authentication form section */}
             <div className="auth-form-side">
 
                 <div className="auth-form">
 
+                    {/* TravelMate brand link */}
                     <Link to="/" className="auth-brand">
                         <Compass /> TravelMate.
                     </Link>
 
+                    {/* Heading changes depending on login or registration mode */}
                     <span className="eyebrow">
                         {isRegister
                             ? "JOIN THE ADVENTURE"
@@ -841,8 +948,10 @@ function AuthPage({ mode, onLogin }) {
                             : "Sign in to continue your travel journey."}
                     </p>
 
+                    {/* Authentication form */}
                     <form onSubmit={handleSubmit}>
 
+                        {/* Name field is displayed only during registration */}
                         {isRegister && (
 
                             <label>
@@ -862,6 +971,7 @@ function AuthPage({ mode, onLogin }) {
 
                         )}
 
+                        {/* Email input field */}
                         <label>
                             Email address
 
@@ -875,6 +985,7 @@ function AuthPage({ mode, onLogin }) {
 
                         </label>
 
+                        {/* Password input field */}
                         <label>
                             Password
 
@@ -889,12 +1000,14 @@ function AuthPage({ mode, onLogin }) {
 
                         </label>
 
+                        {/* Display authentication errors when available */}
                         {error && (
                             <div className="form-error">
                                 {error}
                             </div>
                         )}
 
+                        {/* Submit button with loading feedback */}
                         <button
                             className="auth-submit"
                             disabled={loading}
@@ -912,6 +1025,7 @@ function AuthPage({ mode, onLogin }) {
 
                     </form>
 
+                    {/* Link to switch between login and registration */}
                     <div className="auth-switch">
 
                         {isRegister
@@ -926,6 +1040,7 @@ function AuthPage({ mode, onLogin }) {
 
                     </div>
 
+                    {/* Security message displayed below the form */}
                     <div className="auth-security">
                         <ShieldCheck size={16} />
                         Your account is protected.
@@ -938,17 +1053,23 @@ function AuthPage({ mode, onLogin }) {
         </main>
 
     );
+
 }
 
 // --------------------------------------------------
 // DASHBOARD
 // --------------------------------------------------
 
+// Dashboard component displaying the logged-in user's information
 function Dashboard({ user, logout }) {
 
+    // Store the verified user information retrieved from the backend
     const [verifiedUser, setVerifiedUser] = useState(user);
+
+    // State for handling errors while retrieving user information
     const [error, setError] = useState("");
 
+    // Fetch the current authenticated user's details when the dashboard loads
     useEffect(() => {
 
         getCurrentUser()
@@ -961,6 +1082,7 @@ function Dashboard({ user, logout }) {
 
         <main className="dashboard-page">
 
+            {/* Dashboard welcome message */}
             <div className="dashboard-welcome">
 
                 <span className="eyebrow">
@@ -977,14 +1099,17 @@ function Dashboard({ user, logout }) {
 
             </div>
 
+            {/* Display an error if user information cannot be retrieved */}
             {error && (
                 <div className="form-error">
                     {error}
                 </div>
             )}
 
+            {/* Grid containing the profile and dashboard feature cards */}
             <div className="dashboard-grid">
 
+                {/* User profile information card */}
                 <div className="dashboard-card profile-card">
 
                     <div className="profile-avatar">
@@ -1002,6 +1127,7 @@ function Dashboard({ user, logout }) {
 
                 </div>
 
+                {/* Dashboard card linking to the destinations page */}
                 <div className="dashboard-card">
 
                     <div className="dashboard-card-icon">
@@ -1020,6 +1146,7 @@ function Dashboard({ user, logout }) {
 
                 </div>
 
+                {/* Dashboard card linking to itinerary management */}
                 <div className="dashboard-card">
 
                     <div className="dashboard-card-icon orange">
@@ -1041,6 +1168,7 @@ function Dashboard({ user, logout }) {
 
             </div>
 
+            {/* Button for logging out from the dashboard */}
             <button
                 className="dashboard-logout"
                 onClick={logout}
@@ -1052,18 +1180,21 @@ function Dashboard({ user, logout }) {
         </main>
 
     );
+
 }
 
 // --------------------------------------------------
 // FOOTER
 // --------------------------------------------------
 
+// Footer component displayed at the bottom of the application
 function Footer() {
 
     return (
 
         <footer className="footer">
 
+            {/* TravelMate logo linking back to the home page */}
             <Link to="/" className="brand">
 
                 <span className="brand-icon">
@@ -1076,10 +1207,12 @@ function Footer() {
 
             </Link>
 
+            {/* Short application description */}
             <p>
                 Discover more. Travel better. Explore Sri Lanka.
             </p>
 
+            {/* Display the current year automatically */}
             <span>
                 © {new Date().getFullYear()} TravelMate.
                 All rights reserved.
@@ -1095,23 +1228,30 @@ function Footer() {
 // MAIN APP CONTENT
 // --------------------------------------------------
 
+// Main component managing application data, authentication, and routes
 function AppContent() {
 
+    // Initialize the user state using previously saved authentication data
     const [user, setUser] = useState(getSavedUser);
 
+    // State variables for storing destination data and request status
     const [destinations, setDestinations] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
+    // Function for retrieving destination data from the backend
     const loadDestinations = async () => {
 
         try {
 
+            // Activate loading state and clear previous errors
             setLoading(true);
             setError("");
 
+            // Request destination data using the API service
             const result = await getDestinations();
 
+            // Store the returned destination array
             setDestinations(
                 Array.isArray(result.data)
                     ? result.data
@@ -1120,25 +1260,32 @@ function AppContent() {
 
         } catch (err) {
 
+            // Store an error message if the request fails
             setError(err.message);
 
         } finally {
 
+            // Stop the loading state after the request completes
             setLoading(false);
 
         }
     };
 
+    // Load destinations once when the main application content mounts
     useEffect(() => {
         loadDestinations();
     }, []);
 
+    // Handle user logout and clear saved authentication information
     const logout = () => {
 
+        // Remove authentication data from storage
         clearAuth();
 
+        // Clear the current user from application state
         setUser(null);
 
+        // Redirect the browser to the home page
         window.location.href = "/";
 
     };
@@ -1147,13 +1294,16 @@ function AppContent() {
 
         <div className="app">
 
+            {/* Display the navigation bar across application pages */}
             <Navbar
                 user={user}
                 logout={logout}
             />
 
+            {/* Define application routes and the components displayed for each route */}
             <Routes>
 
+                {/* Home page route */}
                 <Route
                     path="/"
                     element={
@@ -1165,11 +1315,13 @@ function AppContent() {
                     }
                 />
 
+                {/* About page route */}
                 <Route
                     path="/about"
                     element={<About />}
                 />
 
+                {/* Destinations listing page route */}
                 <Route
                     path="/destinations"
                     element={
@@ -1180,11 +1332,13 @@ function AppContent() {
                     }
                 />
 
+                {/* Individual destination details route */}
                 <Route
                     path="/destinations/:id"
                     element={<DestinationDetails />}
                 />
 
+                {/* Destination comparison page route */}
                 <Route
                     path="/compare"
                     element={
@@ -1194,6 +1348,7 @@ function AppContent() {
                     }
                 />
 
+                {/* Login page route */}
                 <Route
                     path="/login"
                     element={
@@ -1203,6 +1358,7 @@ function AppContent() {
                     }
                 />
 
+                {/* Registration page route */}
                 <Route
                     path="/register"
                     element={
@@ -1212,6 +1368,7 @@ function AppContent() {
                     }
                 />
 
+                {/* Protected dashboard route */}
                 <Route
                     path="/dashboard"
                     element={
@@ -1221,6 +1378,7 @@ function AppContent() {
                     }
                 />
 
+                {/* Protected itinerary management route */}
                 <Route
                     path="/itineraries"
                     element={
@@ -1230,6 +1388,7 @@ function AppContent() {
                     }
                 />
 
+                {/* Fallback route for URLs that do not match an existing page */}
                 <Route
                     path="*"
                     element={
@@ -1247,17 +1406,20 @@ function AppContent() {
 
             </Routes>
 
+            {/* Display the footer below the current page */}
             <Footer />
 
         </div>
 
     );
+
 }
 
 // --------------------------------------------------
 // APP ENTRY
 // --------------------------------------------------
 
+// Main application component that enables browser-based routing
 export default function App() {
 
     return (

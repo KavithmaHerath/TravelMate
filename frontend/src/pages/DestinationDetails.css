@@ -1,4 +1,5 @@
 
+/* Main container for the destination details page */
 .destination-detail-page {
   min-height: 100vh;
   padding: 35px 7%;
@@ -6,6 +7,7 @@
   color: #49392f;
 }
 
+/* Back navigation link to the destinations page */
 .back-destinations {
   display: inline-flex;
   align-items: center;
@@ -17,11 +19,13 @@
   transition: 0.2s ease;
 }
 
+/* Hover effect for the back navigation link */
 .back-destinations:hover {
   color: #cf8150;
   transform: translateX(-3px);
 }
 
+/* Hero section displaying the main destination image */
 .destination-detail-hero {
   position: relative;
   height: 430px;
@@ -30,12 +34,14 @@
   background: #eadbcf;
 }
 
+/* Main destination image */
 .destination-detail-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+/* Gradient overlay containing the destination name and location */
 .destination-detail-overlay {
   position: absolute;
   inset: 0;
@@ -50,11 +56,13 @@
   );
 }
 
+/* Destination name displayed over the hero image */
 .destination-detail-overlay h1 {
   margin: 12px 0;
   font-size: clamp(30px, 5vw, 48px);
 }
 
+/* Destination location information in the hero section */
 .destination-detail-overlay p {
   display: flex;
   align-items: center;
@@ -62,6 +70,7 @@
   margin: 0;
 }
 
+/* Category label displayed in the hero section */
 .detail-category {
   width: fit-content;
   padding: 7px 15px;
@@ -72,15 +81,18 @@
   font-weight: 700;
 }
 
+/* Main content area containing destination information */
 .destination-detail-content {
   max-width: 1050px;
   margin: 40px auto;
 }
 
+/* Individual information sections */
 .detail-section {
   margin-bottom: 35px;
 }
 
+/* Section headings with supporting icons */
 .detail-section h2 {
   display: flex;
   align-items: center;
@@ -90,12 +102,14 @@
   font-size: 25px;
 }
 
+/* Full destination description text */
 .full-description {
   color: #69594e;
   font-size: 16px;
   line-height: 1.9;
 }
 
+/* Grid layout for destination information cards */
 .detail-information-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -103,6 +117,7 @@
   margin: 35px 0;
 }
 
+/* Individual information card styling */
 .detail-info-card {
   padding: 25px;
   border: 1px solid #efdfd0;
@@ -111,38 +126,45 @@
   box-shadow: 0 5px 18px rgba(90, 60, 35, 0.05);
 }
 
+/* Icons displayed inside information cards */
 .detail-info-card svg {
   color: #c47b43;
 }
 
+/* Headings inside information cards */
 .detail-info-card h3 {
   margin: 14px 0 8px;
   color: #49392f;
   font-size: 17px;
 }
 
+/* Descriptions inside information cards */
 .detail-info-card p {
   margin: 0;
   color: #756457;
   line-height: 1.7;
 }
 
+/* Lists used for travel activities and other destination information */
 .detail-list {
   padding-left: 23px;
   color: #69594e;
   line-height: 2;
 }
 
+/* Spacing for individual list items */
 .detail-list li {
   padding-left: 5px;
 }
 
+/* Bottom section containing the navigation link */
 .detail-bottom-link {
   margin-top: 45px;
   padding-top: 25px;
   border-top: 1px solid #efdfd0;
 }
 
+/* Link styling in the bottom section */
 .detail-bottom-link a {
   display: inline-flex;
   align-items: center;
@@ -152,6 +174,7 @@
   text-decoration: none;
 }
 
+/* Message container used for loading, errors, or unavailable destinations */
 .destination-detail-message {
   min-height: 55vh;
   display: flex;
@@ -164,23 +187,30 @@
   color: #49392f;
 }
 
+/* Responsive styles for tablets and smaller screens */
 @media (max-width: 768px) {
+
+  /* Reduce page padding on smaller screens */
   .destination-detail-page {
     padding: 25px 5%;
   }
 
+  /* Reduce hero image height for smaller displays */
   .destination-detail-hero {
     height: 320px;
   }
 
+  /* Adjust overlay spacing on smaller screens */
   .destination-detail-overlay {
     padding: 25px;
   }
 
+  /* Display information cards in a single column */
   .detail-information-grid {
     grid-template-columns: 1fr;
   }
 
+  /* Reduce section heading size on smaller screens */
   .detail-section h2 {
     font-size: 21px;
   }

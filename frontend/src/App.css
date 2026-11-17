@@ -1,10 +1,18 @@
 
-/* NAVIGATION */
+/* =========================================
+   MAIN APPLICATION LAYOUT
+========================================= */
 
+/* Ensure the application occupies at least the full viewport height */
 .app {
     min-height: 100vh;
 }
 
+/* =========================================
+   NAVIGATION BAR
+========================================= */
+
+/* Main navigation bar fixed at the top while scrolling */
 .navbar {
     height: 82px;
     padding: 0 7%;
@@ -18,6 +26,7 @@
     box-shadow: 0 3px 20px rgba(15, 60, 65, 0.05);
 }
 
+/* Brand name and logo container */
 .brand {
     display: flex;
     align-items: center;
@@ -28,6 +37,7 @@
     color: #183b40;
 }
 
+/* Background and layout for the brand icon */
 .brand-icon {
     width: 39px;
     height: 39px;
@@ -38,10 +48,12 @@
     border-radius: 13px;
 }
 
+/* Highlighted part of the brand name */
 .brand-accent {
     color: var(--orange);
 }
 
+/* Navigation links displayed in the navbar */
 .nav-links {
     display: flex;
     align-items: center;
@@ -51,15 +63,18 @@
     color: #587078;
 }
 
+/* Smooth colour transition for navigation links */
 .nav-links a {
     transition: color 0.2s;
 }
 
+/* Highlight navigation links when hovered or active */
 .nav-links a:hover,
 .nav-links a.active {
     color: var(--teal);
 }
 
+/* Login and logout navigation buttons */
 .nav-login,
 .nav-logout {
     padding: 12px 21px;
@@ -72,10 +87,12 @@
     gap: 8px;
 }
 
+/* Logout button text size */
 .nav-logout {
     font-size: 14px;
 }
 
+/* Mobile navigation menu button, hidden on larger screens */
 .mobile-menu {
     display: none;
     border: 0;
@@ -83,8 +100,11 @@
     color: var(--text);
 }
 
-/* HERO */
+/* =========================================
+   HERO SECTION
+========================================= */
 
+/* Main landing page hero section */
 .hero {
     min-height: 610px;
     position: relative;
@@ -96,6 +116,7 @@
     background: #174c50;
 }
 
+/* Background image and overlay cover the entire hero section */
 .hero-background,
 .hero-overlay {
     position: absolute;
@@ -104,11 +125,13 @@
     height: 100%;
 }
 
+/* Hero background image positioning */
 .hero-background {
     object-fit: cover;
     object-position: center;
 }
 
+/* Dark gradient overlay to improve text visibility */
 .hero-overlay {
     background: linear-gradient(
         90deg,
@@ -118,6 +141,7 @@
     );
 }
 
+/* Content displayed above the hero background */
 .hero-content {
     position: relative;
     z-index: 2;
@@ -125,6 +149,7 @@
     width: 100%;
 }
 
+/* Small introductory badge inside the hero section */
 .hero-badge {
     display: inline-flex;
     align-items: center;
@@ -139,6 +164,7 @@
     margin-bottom: 28px;
 }
 
+/* Main hero heading */
 .hero h1 {
     font-family: 'Outfit', sans-serif;
     font-size: clamp(48px, 7vw, 83px);
@@ -147,11 +173,13 @@
     letter-spacing: -2px;
 }
 
+/* Highlighted words in the hero and call-to-action headings */
 .hero h1 span,
 .cta-section h2 span {
     color: var(--yellow);
 }
 
+/* Description displayed below the hero heading */
 .hero-content > p {
     max-width: 560px;
     line-height: 1.9;
@@ -160,6 +188,7 @@
     margin: 23px 0 28px;
 }
 
+/* Search bar displayed inside the hero section */
 .hero-search {
     max-width: 600px;
     background: white;
@@ -172,6 +201,7 @@
     box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
 
+/* Hero search input field */
 .hero-search input {
     border: none;
     outline: none;
@@ -181,6 +211,7 @@
     color: var(--text);
 }
 
+/* Search submission button */
 .hero-search button {
     display: flex;
     align-items: center;
@@ -193,6 +224,7 @@
     font-weight: 700;
 }
 
+/* Trust information displayed below the search bar */
 .hero-trust {
     display: flex;
     flex-wrap: wrap;
@@ -202,12 +234,14 @@
     color: rgba(255,255,255,0.9);
 }
 
+/* Layout for individual trust information items */
 .hero-trust span {
     display: flex;
     align-items: center;
     gap: 7px;
 }
 
+/* Bottom information displayed over the hero background */
 .hero-bottom {
     position: absolute;
     bottom: 25px;
@@ -220,8 +254,11 @@
     color: rgba(255,255,255,0.75);
 }
 
-/* STATS */
+/* =========================================
+   STATISTICS SECTION
+========================================= */
 
+/* Grid containing the platform statistics */
 .stats-section {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -230,12 +267,14 @@
     background: #f0f9f7;
 }
 
+/* Individual statistic item */
 .stat-item {
     display: flex;
     align-items: center;
     gap: 14px;
 }
 
+/* Icon styling inside statistic items */
 .stat-item > svg {
     width: 43px;
     height: 43px;
@@ -245,28 +284,35 @@
     border-radius: 13px;
 }
 
+/* Display statistic values and descriptions on separate lines */
 .stat-item strong,
 .stat-item span {
     display: block;
 }
 
+/* Main statistic value */
 .stat-item strong {
     font-family: 'Outfit', sans-serif;
     font-size: 15px;
 }
 
+/* Supporting text below each statistic */
 .stat-item span {
     font-size: 11px;
     color: var(--muted);
     margin-top: 3px;
 }
 
-/* COMMON SECTIONS */
+/* =========================================
+   COMMON CONTENT SECTIONS
+========================================= */
 
+/* Shared spacing for main content sections */
 .section {
     padding: 100px 9%;
 }
 
+/* Layout for section headings and their supporting content */
 .section-heading {
     display: flex;
     justify-content: space-between;
@@ -275,6 +321,7 @@
     margin-bottom: 40px;
 }
 
+/* Small introductory text above section headings */
 .eyebrow {
     display: inline-block;
     color: var(--orange);
@@ -284,6 +331,7 @@
     margin-bottom: 14px;
 }
 
+/* Shared typography for major section headings */
 .section-heading h2,
 .about-content h2,
 .cta-section h2 {
@@ -293,6 +341,7 @@
     letter-spacing: -1px;
 }
 
+/* Highlighted heading text in different sections */
 .section-heading h2 span,
 .about-content h2 span,
 .page-heading h1 span,
@@ -300,6 +349,7 @@
     color: var(--teal);
 }
 
+/* Supporting paragraphs in common content sections */
 .section-heading p,
 .about-content > p,
 .cta-section p {
@@ -309,6 +359,7 @@
     margin-top: 12px;
 }
 
+/* Shared layout and styling for action buttons */
 .outline-button,
 .primary-button,
 .cta-button {
@@ -323,25 +374,31 @@
     transition: 0.25s;
 }
 
+/* Outline-style button */
 .outline-button {
     border: 1px solid #d9e8e5;
     color: var(--teal);
     white-space: nowrap;
 }
 
+/* Hover effect for outline buttons */
 .outline-button:hover {
     background: var(--teal);
     color: white;
 }
 
-/* DESTINATION CARDS */
+/* =========================================
+   DESTINATION CARDS
+========================================= */
 
+/* Grid layout for destination cards */
 .destination-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 23px;
 }
 
+/* Individual destination card container */
 .destination-card {
     border: 1px solid #edf1f0;
     border-radius: 18px;
@@ -350,17 +407,20 @@
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
+/* Hover animation for destination cards */
 .destination-card:hover {
     transform: translateY(-7px);
     box-shadow: 0 17px 35px rgba(19, 76, 75, 0.11);
 }
 
+/* Container for destination images */
 .destination-image {
     height: 220px;
     position: relative;
     overflow: hidden;
 }
 
+/* Destination image fills its container */
 .destination-image img {
     width: 100%;
     height: 100%;
@@ -368,10 +428,12 @@
     transition: transform 0.5s;
 }
 
+/* Zoom effect for destination images when cards are hovered */
 .destination-card:hover .destination-image img {
     transform: scale(1.07);
 }
 
+/* Category label positioned over the destination image */
 .category-tag {
     position: absolute;
     left: 14px;
@@ -384,6 +446,7 @@
     font-weight: 800;
 }
 
+/* Favourite button positioned over the destination image */
 .heart-button {
     position: absolute;
     top: 12px;
@@ -398,14 +461,17 @@
     color: #71858b;
 }
 
+/* Colour applied to a saved favourite button */
 .heart-button.saved {
     color: #f36f66;
 }
 
+/* Text content inside destination cards */
 .destination-info {
     padding: 20px;
 }
 
+/* Destination location information */
 .destination-location {
     display: flex;
     align-items: center;
@@ -415,12 +481,14 @@
     font-weight: 600;
 }
 
+/* Destination name inside the card */
 .destination-info h3 {
     font-family: 'Outfit', sans-serif;
     font-size: 21px;
     margin: 12px 0 8px;
 }
 
+/* Short destination description */
 .destination-info p {
     color: var(--muted);
     font-size: 12px;
@@ -428,6 +496,7 @@
     min-height: 62px;
 }
 
+/* Link to open the destination details */
 .card-link {
     display: inline-flex;
     align-items: center;
@@ -438,12 +507,16 @@
     font-weight: 800;
 }
 
+/* Hover colour for destination links */
 .card-link:hover {
     color: var(--orange);
 }
 
-/* ABOUT */
+/* =========================================
+   ABOUT SECTION
+========================================= */
 
+/* Two-column layout for the About section */
 .about-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -453,11 +526,13 @@
     background: #f2f9f7;
 }
 
+/* Container for the About section image */
 .about-image {
     height: 440px;
     position: relative;
 }
 
+/* About section image styling */
 .about-image img {
     width: 100%;
     height: 100%;
@@ -465,6 +540,7 @@
     border-radius: 25px;
 }
 
+/* Information label positioned over the About image */
 .about-image-label {
     position: absolute;
     left: 20px;
@@ -480,20 +556,24 @@
     color: var(--teal);
 }
 
+/* About section main heading */
 .about-content h2 {
     font-size: 48px;
 }
 
+/* Paragraph spacing inside the About section */
 .about-content > p {
     margin: 18px 0;
 }
 
+/* Grid containing the About section feature points */
 .about-points {
     display: grid;
     gap: 15px;
     margin: 24px 0 30px;
 }
 
+/* Layout for individual About feature points */
 .about-points div {
     display: flex;
     align-items: center;
@@ -502,24 +582,30 @@
     font-weight: 600;
 }
 
+/* Icons displayed beside About feature points */
 .about-points svg {
     width: 19px;
     color: var(--teal);
 }
 
+/* Main filled action button */
 .primary-button {
     background: var(--teal);
     color: white;
     border: 0;
 }
 
+/* Hover effect for the primary action button */
 .primary-button:hover {
     background: var(--dark-teal);
     transform: translateY(-2px);
 }
 
-/* CTA */
+/* =========================================
+   CALL-TO-ACTION SECTION
+========================================= */
 
+/* Main call-to-action section at the bottom of the page */
 .cta-section {
     text-align: center;
     padding: 85px 20px;
@@ -527,26 +613,33 @@
     color: white;
 }
 
+/* Highlight colour for the CTA introductory label */
 .cta-section .eyebrow {
     color: var(--yellow);
 }
 
+/* Highlighted text in the CTA heading */
 .cta-section h2 span {
     color: var(--yellow);
 }
 
+/* CTA description text */
 .cta-section p {
     color: rgba(255,255,255,0.78);
     margin-bottom: 27px;
 }
 
+/* CTA action button */
 .cta-button {
     background: var(--orange);
     color: white;
 }
 
-/* FOOTER */
+/* =========================================
+   FOOTER
+========================================= */
 
+/* Footer layout and background */
 .footer {
     padding: 40px 9%;
     display: flex;
@@ -556,24 +649,30 @@
     background: #fff;
 }
 
+/* Footer text styling */
 .footer p,
 .footer > span {
     font-size: 11px;
     color: var(--muted);
 }
 
-/* DESTINATIONS PAGE */
+/* =========================================
+   DESTINATIONS PAGE
+========================================= */
 
+/* Main container for destination listing pages */
 .page-container {
     padding: 75px 9% 100px;
     min-height: 75vh;
 }
 
+/* Heading area for pages */
 .page-heading {
     text-align: center;
     margin-bottom: 42px;
 }
 
+/* Main headings on listing and dashboard pages */
 .page-heading h1,
 .dashboard-welcome h1 {
     font-family: 'Outfit', sans-serif;
@@ -581,6 +680,7 @@
     letter-spacing: -1.5px;
 }
 
+/* Supporting descriptions below page headings */
 .page-heading p,
 .dashboard-welcome p {
     color: var(--muted);
@@ -588,6 +688,7 @@
     margin-top: 10px;
 }
 
+/* Background panel containing search and category filters */
 .filter-panel {
     padding: 24px;
     background: #f3f9f8;
@@ -595,6 +696,7 @@
     margin-bottom: 30px;
 }
 
+/* Destination search input container */
 .destination-search {
     display: flex;
     align-items: center;
@@ -606,6 +708,7 @@
     color: var(--teal);
 }
 
+/* Destination search input field */
 .destination-search input {
     flex: 1;
     min-width: 0;
@@ -614,6 +717,7 @@
     font-size: 14px;
 }
 
+/* Layout for destination category filter buttons */
 .category-list {
     display: flex;
     flex-wrap: wrap;
@@ -621,6 +725,7 @@
     margin-top: 20px;
 }
 
+/* Individual category filter button */
 .category-button {
     display: flex;
     align-items: center;
@@ -634,26 +739,32 @@
     font-weight: 700;
 }
 
+/* Styling for the currently selected category */
 .category-button.active {
     background: var(--teal);
     color: white;
     border-color: var(--teal);
 }
 
+/* Text showing the number of matching destinations */
 .results-count {
     font-size: 13px;
     color: var(--muted);
     margin: 20px 0;
 }
 
-/* DETAILS */
+/* =========================================
+   DESTINATION DETAILS
+========================================= */
 
+/* Main container for the destination details page */
 .details-page {
     max-width: 1050px;
     margin: auto;
     padding: 55px 25px 90px;
 }
 
+/* Back navigation link */
 .back-link {
     color: var(--teal);
     font-size: 13px;
@@ -662,6 +773,7 @@
     margin-bottom: 25px;
 }
 
+/* Container for the main destination image */
 .details-image {
     height: 440px;
     border-radius: 22px;
@@ -669,12 +781,14 @@
     position: relative;
 }
 
+/* Destination details image */
 .details-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
+/* Category label positioned over the destination image */
 .details-category {
     position: absolute;
     top: 20px;
@@ -687,17 +801,20 @@
     font-weight: 700;
 }
 
+/* Main information content below the destination image */
 .details-content {
     max-width: 720px;
     padding: 38px 0;
 }
 
+/* Destination name heading */
 .details-content h1 {
     font-family: 'Outfit', sans-serif;
     font-size: 45px;
     margin-bottom: 12px;
 }
 
+/* Destination description text */
 .details-content > p {
     margin-top: 25px;
     color: #60777b;
@@ -705,6 +822,7 @@
     line-height: 1.9;
 }
 
+/* Information note displayed below the destination description */
 .details-note {
     display: flex;
     gap: 12px;
@@ -717,20 +835,25 @@
     font-size: 13px;
 }
 
-/* AUTH */
+/* =========================================
+   AUTHENTICATION PAGES
+========================================= */
 
+/* Two-column layout for login and registration pages */
 .auth-page {
     min-height: 720px;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
+/* Image section of the authentication page */
 .auth-visual {
     position: relative;
     min-height: 700px;
     overflow: hidden;
 }
 
+/* Authentication background image and overlay */
 .auth-visual > img,
 .auth-visual-overlay {
     position: absolute;
@@ -739,14 +862,17 @@
     inset: 0;
 }
 
+/* Authentication background image */
 .auth-visual > img {
     object-fit: cover;
 }
 
+/* Dark gradient overlay on the authentication image */
 .auth-visual-overlay {
     background: linear-gradient(0deg, rgba(4,40,43,.85), rgba(4,40,43,.15));
 }
 
+/* Text content positioned over the authentication image */
 .auth-visual-content {
     position: absolute;
     bottom: 65px;
@@ -755,6 +881,7 @@
     color: white;
 }
 
+/* Main heading over the authentication image */
 .auth-visual-content h2 {
     font-family: 'Outfit', sans-serif;
     font-size: 48px;
@@ -762,27 +889,32 @@
     margin: 20px 0;
 }
 
+/* Highlighted text in the authentication heading */
 .auth-visual-content h2 span {
     color: var(--yellow);
 }
 
+/* Supporting paragraph over the authentication image */
 .auth-visual-content p {
     line-height: 1.8;
     max-width: 390px;
     color: rgba(255,255,255,.85);
 }
 
+/* Container for the authentication form */
 .auth-form-side {
     display: grid;
     place-items: center;
     padding: 55px 30px;
 }
 
+/* Authentication form width and layout */
 .auth-form {
     max-width: 410px;
     width: 100%;
 }
 
+/* Brand information displayed above the authentication form */
 .auth-brand {
     display: flex;
     align-items: center;
@@ -794,23 +926,27 @@
     margin-bottom: 50px;
 }
 
+/* Authentication form heading */
 .auth-form h1 {
     font-family: 'Outfit', sans-serif;
     font-size: 34px;
     margin-bottom: 10px;
 }
 
+/* Supporting text below the authentication heading */
 .auth-form > p {
     font-size: 13px;
     color: var(--muted);
     margin-bottom: 30px;
 }
 
+/* Vertical layout for authentication form fields */
 .auth-form form {
     display: grid;
     gap: 20px;
 }
 
+/* Labels for authentication form inputs */
 .auth-form label {
     display: grid;
     gap: 9px;
@@ -818,6 +954,7 @@
     font-weight: 700;
 }
 
+/* Authentication input field styling */
 .auth-form input {
     width: 100%;
     padding: 15px;
@@ -828,10 +965,12 @@
     transition: border 0.2s;
 }
 
+/* Highlight authentication inputs when focused */
 .auth-form input:focus {
     border-color: var(--teal);
 }
 
+/* Authentication form submission button */
 .auth-submit {
     display: flex;
     justify-content: center;
@@ -846,11 +985,13 @@
     margin-top: 5px;
 }
 
+/* Disabled state of the authentication submission button */
 .auth-submit:disabled {
     opacity: .6;
     cursor: not-allowed;
 }
 
+/* Link area for switching between login and registration */
 .auth-switch {
     text-align: center;
     font-size: 12px;
@@ -858,11 +999,13 @@
     margin-top: 25px;
 }
 
+/* Link styling inside the authentication switch area */
 .auth-switch a {
     color: var(--teal);
     font-weight: 800;
 }
 
+/* Security information displayed below the authentication form */
 .auth-security {
     margin-top: 35px;
     padding-top: 20px;
@@ -874,27 +1017,34 @@
     font-size: 11px;
 }
 
+/* Security icon colour */
 .auth-security svg {
     color: var(--teal);
 }
 
-/* DASHBOARD */
+/* =========================================
+   USER DASHBOARD
+========================================= */
 
+/* Main dashboard page container */
 .dashboard-page {
     min-height: 70vh;
     padding: 75px 9%;
 }
 
+/* Welcome section at the top of the dashboard */
 .dashboard-welcome {
     margin-bottom: 40px;
 }
 
+/* Grid layout for dashboard information cards */
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 22px;
 }
 
+/* Shared styling for dashboard cards */
 .dashboard-card {
     border: 1px solid #e8efed;
     border-radius: 18px;
@@ -902,10 +1052,12 @@
     background: white;
 }
 
+/* Special background for the user profile card */
 .profile-card {
     background: #f0f9f7;
 }
 
+/* Shared icon container for profile and dashboard cards */
 .profile-avatar,
 .dashboard-card-icon {
     width: 55px;
@@ -918,17 +1070,20 @@
     margin-bottom: 20px;
 }
 
+/* User name displayed in the profile card */
 .profile-card h2 {
     font-family: 'Outfit', sans-serif;
     font-size: 22px;
 }
 
+/* Supporting user information in the profile card */
 .profile-card > p {
     font-size: 12px;
     color: var(--muted);
     margin-top: 7px;
 }
 
+/* Membership label displayed in the profile card */
 .member-tag {
     display: inline-flex;
     align-items: center;
@@ -938,23 +1093,27 @@
     margin-top: 20px;
 }
 
+/* Dashboard card headings */
 .dashboard-card h3 {
     font-family: 'Outfit', sans-serif;
     font-size: 19px;
     margin-bottom: 10px;
 }
 
+/* Dashboard card descriptions */
 .dashboard-card > p {
     color: var(--muted);
     font-size: 12px;
     line-height: 1.8;
 }
 
+/* Alternative orange icon style for dashboard cards */
 .dashboard-card-icon.orange {
     background: #fff0e7;
     color: var(--orange);
 }
 
+/* Label used for features that are not yet available */
 .coming-soon {
     display: inline-block;
     margin-top: 18px;
@@ -963,6 +1122,7 @@
     font-weight: 700;
 }
 
+/* User logout button in the dashboard */
 .dashboard-logout {
     display: flex;
     align-items: center;
@@ -975,8 +1135,11 @@
     margin-top: 30px;
 }
 
-/* STATES */
+/* =========================================
+   LOADING, EMPTY AND ERROR STATES
+========================================= */
 
+/* Shared layout for loading and empty-state messages */
 .loading-state,
 .empty-state {
     display: flex;
@@ -990,10 +1153,12 @@
     padding: 30px;
 }
 
+/* Heading inside empty-state messages */
 .empty-state h3 {
     color: var(--text);
 }
 
+/* Shared styling for error messages */
 .error-message,
 .form-error {
     background: #fff0ed;
@@ -1004,49 +1169,69 @@
     font-size: 13px;
 }
 
+/* Rotating animation for loading icons */
 .spin {
     animation: spin 1s linear infinite;
 }
 
+/* Keyframes defining the loading icon rotation */
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
 
-/* RESPONSIVE */
+/* =========================================
+   RESPONSIVE DESIGN - TABLETS
+========================================= */
 
+/* Adjust layouts for screens up to 1000px wide */
 @media (max-width: 1000px) {
+
+    /* Display destination cards in two columns */
     .destination-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    /* Display statistics in two columns */
     .stats-section {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    /* Reduce About section spacing on smaller screens */
     .about-section {
         gap: 35px;
         padding: 70px 7%;
     }
 
+    /* Display dashboard cards in two columns */
     .dashboard-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
+/* =========================================
+   RESPONSIVE DESIGN - MOBILE
+========================================= */
+
+/* Adjust navigation and page layouts for screens up to 700px wide */
 @media (max-width: 700px) {
+
+    /* Reduce navbar height and horizontal padding */
     .navbar {
         height: 70px;
         padding: 0 5%;
     }
 
+    /* Reduce brand text size */
     .brand {
         font-size: 22px;
     }
 
+    /* Display the mobile menu button */
     .mobile-menu {
         display: block;
     }
 
+    /* Mobile navigation menu, hidden by default */
     .nav-links {
         display: none;
         position: absolute;
@@ -1061,173 +1246,221 @@
         box-shadow: 0 12px 20px rgba(0,0,0,.08);
     }
 
+    /* Show the mobile navigation menu when it is opened */
     .nav-links.open {
         display: flex;
     }
 
+    /* Center login and logout buttons in the mobile menu */
     .nav-login,
     .nav-logout {
         justify-content: center;
     }
 
+    /* Adjust hero section spacing for mobile screens */
     .hero {
         min-height: 570px;
         padding: 65px 6%;
     }
 
+    /* Reduce hero heading size */
     .hero h1 {
         font-size: 49px;
     }
 
+    /* Reduce hero description text size */
     .hero-content > p {
         font-size: 14px;
     }
 
+    /* Allow hero search elements to wrap */
     .hero-search {
         flex-wrap: wrap;
     }
 
+    /* Allow the search button to use available width */
     .hero-search button {
         flex: 1;
         justify-content: center;
     }
 
+    /* Adjust bottom hero information positioning */
     .hero-bottom {
         left: 6%;
         right: 6%;
         font-size: 8px;
     }
 
+    /* Reduce statistics section spacing */
     .stats-section {
         padding: 25px 6%;
         gap: 22px 12px;
     }
 
+    /* Reduce spacing between statistic icons and text */
     .stat-item {
         gap: 9px;
     }
 
+    /* Reduce statistic icon dimensions */
     .stat-item > svg {
         width: 36px;
         height: 36px;
     }
 
+    /* Reduce statistic values text size */
     .stat-item strong {
         font-size: 12px;
     }
 
+    /* Reduce statistic descriptions text size */
     .stat-item span {
         font-size: 9px;
     }
 
+    /* Reduce general content section spacing */
     .section {
         padding: 65px 6%;
     }
 
+    /* Stack section heading content vertically */
     .section-heading {
         display: block;
     }
 
+    /* Add spacing above section heading action buttons */
     .section-heading .outline-button {
         margin-top: 22px;
     }
 
+    /* Display destination cards in one column */
     .destination-grid {
         grid-template-columns: 1fr;
     }
 
+    /* Increase destination image height for mobile cards */
     .destination-image {
         height: 245px;
     }
 
+    /* Stack About section image and content vertically */
     .about-section {
         grid-template-columns: 1fr;
         padding: 60px 6%;
     }
 
+    /* Adjust About image height */
     .about-image {
         height: 320px;
     }
 
+    /* Reduce About heading size */
     .about-content h2 {
         font-size: 40px;
     }
 
+    /* Stack footer content vertically */
     .footer {
         flex-direction: column;
         text-align: center;
         padding: 35px 6%;
     }
 
+    /* Reduce page container spacing */
     .page-container {
         padding: 55px 6%;
     }
 
+    /* Reduce spacing between category filters */
     .category-list {
         gap: 8px;
     }
 
+    /* Reduce category button size */
     .category-button {
         font-size: 10px;
         padding: 9px 11px;
     }
 
+    /* Reduce destination details image height */
     .details-image {
         height: 280px;
     }
 
+    /* Reduce destination details heading size */
     .details-content h1 {
         font-size: 36px;
     }
 
+    /* Stack authentication page sections vertically */
     .auth-page {
         grid-template-columns: 1fr;
     }
 
+    /* Reduce authentication image section height */
     .auth-visual {
         min-height: 300px;
     }
 
+    /* Adjust authentication image text position */
     .auth-visual-content {
         bottom: 30px;
     }
 
+    /* Reduce authentication image heading size */
     .auth-visual-content h2 {
         font-size: 35px;
     }
 
+    /* Adjust authentication form spacing */
     .auth-form-side {
         padding: 50px 7%;
     }
 
+    /* Reduce spacing below authentication branding */
     .auth-brand {
         margin-bottom: 35px;
     }
 
+    /* Reduce dashboard page spacing */
     .dashboard-page {
         padding: 55px 6%;
     }
 
+    /* Display dashboard cards in a single column */
     .dashboard-grid {
         grid-template-columns: 1fr;
     }
 }
 
+/* =========================================
+   RESPONSIVE DESIGN - VERY SMALL SCREENS
+========================================= */
+
+/* Additional adjustments for screens up to 380px wide */
 @media (max-width: 380px) {
+
+    /* Further reduce hero heading size */
     .hero h1 {
         font-size: 41px;
     }
 
+    /* Adjust hero search padding */
     .hero-search {
         padding: 12px;
     }
 
+    /* Adjust hero search button padding */
     .hero-search button {
         padding: 12px;
     }
 }
 
+/* =========================================
+   DISTRICT FILTER
+========================================= */
 
+/* Container for the district selection dropdown */
 .district-filter {
     display: flex;
     flex-direction: column;
@@ -1236,6 +1469,7 @@
     max-width: 390px;
 }
 
+/* Layout and styling for the district filter label */
 .district-filter label {
     display: flex;
     align-items: center;
@@ -1245,10 +1479,12 @@
     color: #49392f;
 }
 
+/* Colour for the icon inside the district filter label */
 .district-filter label svg {
     color: #c47b43;
 }
 
+/* District selection dropdown styling */
 .district-filter select {
     width: 100%;
     padding: 15px 42px 15px 16px;
@@ -1263,17 +1499,22 @@
     transition: 0.25s ease;
 }
 
+/* Highlight the district dropdown when hovered */
 .district-filter select:hover {
     border-color: #c47b43;
 }
 
+/* Focus effect for the district dropdown */
 .district-filter select:focus {
     border-color: #c47b43;
     box-shadow: 0 0 0 3px rgba(196, 123, 67, 0.12);
 }
 
+/* =========================================
+   CLEAR DESTINATION FILTERS BUTTON
+========================================= */
 
-
+/* Main styling and layout for the clear filters button */
 .clear-destination-filters {
     display: inline-flex;
     align-items: center;
@@ -1299,6 +1540,7 @@
     box-shadow: 0 3px 10px rgba(168, 94, 44, 0.08);
 }
 
+/* Hover effect for the clear destination filters button */
 .clear-destination-filters:hover {
     background: linear-gradient(135deg, #e9a66f, #cf8150);
     color: #ffffff;
@@ -1308,11 +1550,13 @@
     box-shadow: 0 6px 15px rgba(168, 94, 44, 0.2);
 }
 
+/* Pressed state of the clear destination filters button */
 .clear-destination-filters:active {
     transform: translateY(0);
     box-shadow: 0 2px 6px rgba(168, 94, 44, 0.12);
 }
 
+/* Visible keyboard focus indicator for accessibility */
 .clear-destination-filters:focus-visible {
     outline: 3px solid rgba(207, 129, 80, 0.3);
     outline-offset: 3px;

@@ -1,9 +1,12 @@
+
+/* Main styling for the About page */
 .about-page {
     color: #263b45;
     background: #fffdf9;
     min-height: 100vh;
 }
 
+/* Hero section containing the main heading, description, button, and image */
 .about-hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -13,10 +16,12 @@
     background: linear-gradient(120deg, #fff2df, #f4f0ff, #e9f8f5);
 }
 
+/* Hero text content */
 .about-hero-content {
     max-width: 550px;
 }
 
+/* Small introductory label above the main heading */
 .about-tag {
     display: inline-flex;
     align-items: center;
@@ -30,6 +35,7 @@
     letter-spacing: 1px;
 }
 
+/* Main hero heading */
 .about-hero h1 {
     margin: 23px 0 18px;
     font-size: clamp(42px, 5.5vw, 68px);
@@ -37,10 +43,12 @@
     color: #203641;
 }
 
+/* Highlighted text within the hero heading */
 .about-hero h1 span {
     color: #e79747;
 }
 
+/* Hero section description */
 .about-hero-content > p {
     max-width: 470px;
     color: #687984;
@@ -48,6 +56,7 @@
     line-height: 1.8;
 }
 
+/* Main button in the hero section */
 .about-hero-button {
     display: inline-flex;
     align-items: center;
@@ -62,15 +71,18 @@
     transition: .2s;
 }
 
+/* Hover effect for the hero button */
 .about-hero-button:hover {
     background: #d48131;
     transform: translateY(-2px);
 }
 
+/* Container for the hero image */
 .about-hero-image {
     position: relative;
 }
 
+/* Hero image styling */
 .about-hero-image img {
     display: block;
     width: 100%;
@@ -80,6 +92,7 @@
     box-shadow: 0 20px 45px rgba(35, 55, 65, .15);
 }
 
+/* Small information label displayed over the hero image */
 .about-image-note {
     position: absolute;
     bottom: 18px;
@@ -95,6 +108,7 @@
     font-weight: 700;
 }
 
+/* About story section */
 .about-story {
     max-width: 850px;
     margin: 0 auto;
@@ -102,6 +116,7 @@
     text-align: center;
 }
 
+/* Icon container in the story section */
 .about-story-icon {
     display: grid;
     place-items: center;
@@ -113,6 +128,7 @@
     color: #4389bd;
 }
 
+/* Small section labels used throughout the About page */
 .about-small-heading {
     color: #d98c40;
     font-size: 12px;
@@ -120,6 +136,7 @@
     letter-spacing: 1.5px;
 }
 
+/* Headings for the story and section heading areas */
 .about-story h2,
 .about-section-heading h2 {
     margin: 12px 0 18px;
@@ -127,17 +144,20 @@
     font-size: clamp(29px, 4vw, 40px);
 }
 
+/* Highlighted words in section headings */
 .about-story h2 span,
 .about-section-heading h2 span {
     color: #e49a4c;
 }
 
+/* Description text in the story section */
 .about-story > p {
     color: #71808a;
     line-height: 1.9;
     font-size: 15px;
 }
 
+/* Mission and vision cards layout */
 .about-mission {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -147,19 +167,23 @@
     padding: 0 24px 85px;
 }
 
+/* Shared styling for mission and vision cards */
 .mission-card {
     padding: 32px;
     border-radius: 20px;
 }
 
+/* Background for the first mission card */
 .mission-one {
     background: #eaf5ff;
 }
 
+/* Background for the second mission card */
 .mission-two {
     background: #fff0e5;
 }
 
+/* Icon container inside mission cards */
 .mission-icon {
     display: grid;
     place-items: center;
@@ -171,10 +195,12 @@
     color: #4389bd;
 }
 
+/* Icon colour for the second mission card */
 .mission-two .mission-icon {
     color: #e18c4c;
 }
 
+/* Small labels inside mission cards */
 .mission-card > span {
     color: #73828b;
     font-size: 12px;
@@ -182,32 +208,38 @@
     letter-spacing: 1.3px;
 }
 
+/* Mission card headings */
 .mission-card h3 {
     margin: 12px 0;
     color: #263c47;
     font-size: 24px;
 }
 
+/* Mission card descriptions */
 .mission-card p {
     color: #71808a;
     line-height: 1.8;
     margin-bottom: 0;
 }
 
+/* Features section containing the platform features */
 .about-features {
     padding: 80px 24px;
     background: #f7f8fc;
 }
 
+/* Heading area above the feature cards */
 .about-section-heading {
     text-align: center;
     margin-bottom: 38px;
 }
 
+/* Description below the features heading */
 .about-section-heading > p {
     color: #71808a;
 }
 
+/* Responsive grid containing feature cards */
 .about-feature-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -216,6 +248,7 @@
     margin: 0 auto;
 }
 
+/* Individual feature card styling */
 .about-feature-card {
     padding: 30px 25px;
     border-radius: 18px;
@@ -225,11 +258,13 @@
     transition: .2s;
 }
 
+/* Hover effect for feature cards */
 .about-feature-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 14px 30px rgba(30, 50, 60, .08);
 }
 
+/* Icon container for each feature */
 .about-feature-icon {
     display: grid;
     place-items: center;
@@ -239,26 +274,31 @@
     margin-bottom: 20px;
 }
 
+/* Purple feature icon style */
 .about-feature-icon.purple {
     color: #8058c8;
     background: #f0eaff;
 }
 
+/* Orange feature icon style */
 .about-feature-icon.orange {
     color: #d98638;
     background: #fff0df;
 }
 
+/* Pink feature icon style */
 .about-feature-icon.pink {
     color: #d65c8b;
     background: #ffedf4;
 }
 
+/* Feature card headings */
 .about-feature-card h3 {
     color: #2b414b;
     font-size: 19px;
 }
 
+/* Feature card descriptions */
 .about-feature-card p {
     color: #71808a;
     font-size: 14px;
@@ -266,6 +306,7 @@
     margin-bottom: 0;
 }
 
+/* Final promotional section encouraging users to explore destinations */
 .about-beauty {
     display: flex;
     justify-content: space-between;
@@ -279,6 +320,7 @@
     color: white;
 }
 
+/* Small introductory label in the final section */
 .about-beauty > div:first-child > span {
     color: #ffcf91;
     font-size: 11px;
@@ -286,18 +328,21 @@
     letter-spacing: 1.5px;
 }
 
+/* Final section heading */
 .about-beauty h2 {
     font-size: clamp(30px, 4vw, 43px);
     line-height: 1.2;
     margin: 14px 0;
 }
 
+/* Final section description */
 .about-beauty p {
     max-width: 480px;
     color: #e0eded;
     line-height: 1.8;
 }
 
+/* Button in the final section */
 .about-beauty a {
     display: inline-flex;
     align-items: center;
@@ -311,11 +356,13 @@
     text-decoration: none;
 }
 
+/* Decorative icons in the final section */
 .about-beauty-icons {
     display: flex;
     gap: 20px;
 }
 
+/* Individual decorative icon and label layout */
 .about-beauty-icons div {
     display: flex;
     flex-direction: column;
@@ -324,27 +371,33 @@
     color: #ffcf91;
 }
 
+/* Labels below the decorative icons */
 .about-beauty-icons span {
     color: white;
     font-size: 13px;
     font-weight: 600;
 }
 
+/* Tablet and smaller screen responsive styles */
 @media (max-width: 800px) {
+    /* Stack hero content and image vertically */
     .about-hero {
         grid-template-columns: 1fr;
         gap: 35px;
         padding: 55px 24px;
     }
 
+    /* Adjust hero image height for smaller screens */
     .about-hero-image img {
         height: 300px;
     }
 
+    /* Display feature cards in two columns */
     .about-feature-grid {
         grid-template-columns: 1fr 1fr;
     }
 
+    /* Stack the final section content vertically */
     .about-beauty {
         margin: 50px 20px;
         padding: 35px 25px;
@@ -353,38 +406,47 @@
     }
 }
 
+/* Mobile screen responsive styles */
 @media (max-width: 550px) {
+    /* Reduce hero section spacing */
     .about-hero {
         padding: 42px 18px;
     }
 
+    /* Reduce hero image height on mobile */
     .about-hero-image img {
         height: 240px;
     }
 
+    /* Adjust image note position and text size */
     .about-image-note {
         left: 10px;
         bottom: 10px;
         font-size: 11px;
     }
 
+    /* Reduce story section spacing */
     .about-story {
         padding: 60px 20px;
     }
 
+    /* Stack mission cards in a single column */
     .about-mission {
         grid-template-columns: 1fr;
         padding: 0 18px 60px;
     }
 
+    /* Stack feature cards in a single column */
     .about-feature-grid {
         grid-template-columns: 1fr;
     }
 
+    /* Reduce feature section spacing */
     .about-features {
         padding: 60px 18px;
     }
 
+    /* Distribute decorative icons evenly on mobile */
     .about-beauty-icons {
         width: 100%;
         justify-content: space-between;

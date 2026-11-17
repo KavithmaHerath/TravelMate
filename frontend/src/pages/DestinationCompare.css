@@ -1,4 +1,5 @@
 
+/* Main container for the destination comparison page */
 .compare-page {
     max-width: 1200px;
     margin: 0 auto;
@@ -6,21 +7,25 @@
     min-height: 65vh;
 }
 
+/* Main heading section */
 .compare-heading {
     text-align: center;
     margin-bottom: 42px;
 }
 
+/* Main comparison page heading */
 .compare-heading h1 {
     font-size: clamp(34px, 5vw, 52px);
     margin: 12px 0;
     color: #172b35;
 }
 
+/* Highlighted text in the heading */
 .compare-heading h1 span {
     color: #e69b48;
 }
 
+/* Description below the main heading */
 .compare-heading p {
     color: #71808a;
     line-height: 1.7;
@@ -28,6 +33,7 @@
     margin: 0 auto;
 }
 
+/* Layout for the two destination selection fields and swap indicator */
 .compare-selection {
     display: grid;
     grid-template-columns: 1fr 65px 1fr;
@@ -36,6 +42,7 @@
     margin-bottom: 38px;
 }
 
+/* Individual destination selection card */
 .compare-select-card {
     background: #fff;
     padding: 22px;
@@ -44,6 +51,7 @@
     box-shadow: 0 8px 25px rgba(25, 45, 55, 0.05);
 }
 
+/* Labels for destination selection fields */
 .compare-select-card label {
     display: block;
     font-weight: 700;
@@ -51,6 +59,7 @@
     margin-bottom: 12px;
 }
 
+/* Destination dropdown styling */
 .compare-select-card select {
     width: 100%;
     padding: 14px;
@@ -62,11 +71,13 @@
     outline: none;
 }
 
+/* Focus effect for destination dropdowns */
 .compare-select-card select:focus {
     border-color: #e69b48;
     box-shadow: 0 0 0 3px rgba(230, 155, 72, 0.12);
 }
 
+/* Swap indicator between the two destination selectors */
 .compare-swap {
     display: flex;
     flex-direction: column;
@@ -79,6 +90,7 @@
     font-size: 12px;
 }
 
+/* Grid containing the selected destination cards */
 .compare-destination-cards {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -86,6 +98,7 @@
     margin-bottom: 45px;
 }
 
+/* Individual selected destination card */
 .compare-destination-card {
     overflow: hidden;
     background: #fff;
@@ -94,6 +107,7 @@
     box-shadow: 0 10px 30px rgba(25, 45, 55, 0.06);
 }
 
+/* Destination image inside each comparison card */
 .compare-destination-card > img {
     width: 100%;
     height: 240px;
@@ -101,10 +115,12 @@
     display: block;
 }
 
+/* Content area of each destination card */
 .compare-card-content {
     padding: 23px;
 }
 
+/* Category label displayed on destination cards */
 .compare-category {
     display: inline-block;
     background: #fff1df;
@@ -115,12 +131,14 @@
     font-weight: 700;
 }
 
+/* Destination name inside the comparison card */
 .compare-card-content h2 {
     margin: 13px 0 9px;
     color: #20343e;
     font-size: 25px;
 }
 
+/* Destination location information */
 .compare-card-content p {
     display: flex;
     align-items: center;
@@ -129,6 +147,7 @@
     margin: 0 0 17px;
 }
 
+/* Links to destination details and empty-state navigation */
 .compare-card-content a,
 .compare-empty a {
     display: inline-flex;
@@ -139,21 +158,25 @@
     font-weight: 700;
 }
 
+/* Hover effect for comparison links */
 .compare-card-content a:hover,
 .compare-empty a:hover {
     color: #a9601c;
 }
 
+/* Heading section above the comparison table */
 .comparison-title {
     margin-bottom: 20px;
 }
 
+/* Comparison table heading */
 .comparison-title h2 {
     color: #20343e;
     font-size: 28px;
     margin: 8px 0;
 }
 
+/* Wrapper that allows horizontal scrolling on smaller screens */
 .comparison-table-wrapper {
     overflow-x: auto;
     border: 1px solid #e6ecef;
@@ -161,12 +184,14 @@
     background: #fff;
 }
 
+/* Main destination comparison table */
 .comparison-table {
     width: 100%;
     min-width: 650px;
     border-collapse: collapse;
 }
 
+/* Shared styling for comparison table headers and cells */
 .comparison-table th,
 .comparison-table td {
     padding: 19px 20px;
@@ -176,40 +201,47 @@
     line-height: 1.65;
 }
 
+/* Table column headings */
 .comparison-table thead th {
     background: #f5f8f9;
     color: #263b45;
     font-weight: 800;
 }
 
+/* Labels in the first column of the comparison table */
 .comparison-table tbody th {
     width: 23%;
     color: #344b56;
     font-weight: 700;
 }
 
+/* Destination information displayed in comparison table cells */
 .comparison-table tbody td {
     width: 38.5%;
     color: #657680;
     white-space: pre-line;
 }
 
+/* Layout for comparison row labels and their icons */
 .comparison-row-label {
     display: flex;
     align-items: center;
     gap: 9px;
 }
 
+/* Styling for icons beside comparison row labels */
 .comparison-row-label svg {
     flex-shrink: 0;
     color: #df984a;
 }
 
+/* Remove the bottom border from the final table row */
 .comparison-table tbody tr:last-child th,
 .comparison-table tbody tr:last-child td {
     border-bottom: none;
 }
 
+/* Layout for comparison page action buttons */
 .compare-actions {
     display: flex;
     justify-content: center;
@@ -217,6 +249,7 @@
     margin-top: 28px;
 }
 
+/* Shared styling for primary and secondary buttons */
 .compare-primary-button,
 .compare-secondary-button {
     display: inline-flex;
@@ -231,26 +264,31 @@
     transition: 0.2s ease;
 }
 
+/* Primary comparison action button */
 .compare-primary-button {
     border: 1px solid #e49a49;
     background: #e49a49;
     color: #fff;
 }
 
+/* Hover effect for the primary button */
 .compare-primary-button:hover {
     background: #cb8031;
 }
 
+/* Secondary comparison action button */
 .compare-secondary-button {
     border: 1px solid #dce4e8;
     background: #fff;
     color: #354b55;
 }
 
+/* Hover effect for the secondary button */
 .compare-secondary-button:hover {
     background: #f5f8f9;
 }
 
+/* Empty state displayed when destinations have not been selected */
 .compare-empty {
     text-align: center;
     max-width: 520px;
@@ -261,6 +299,7 @@
     background: #fbfcfc;
 }
 
+/* Icon container in the empty state section */
 .compare-empty-icon {
     width: 65px;
     height: 65px;
@@ -272,44 +311,55 @@
     place-items: center;
 }
 
+/* Empty state heading */
 .compare-empty h2 {
     color: #243a44;
     margin-bottom: 10px;
 }
 
+/* Empty state description */
 .compare-empty p {
     color: #71808a;
     line-height: 1.7;
     margin-bottom: 20px;
 }
 
+/* Responsive styles for tablets and mobile devices */
 @media (max-width: 700px) {
+
+    /* Reduce page spacing on smaller screens */
     .compare-page {
         padding: 42px 16px 65px;
     }
 
+    /* Stack destination selectors vertically */
     .compare-selection {
         grid-template-columns: 1fr;
         gap: 12px;
     }
 
+    /* Display the swap indicator horizontally */
     .compare-swap {
         flex-direction: row;
         padding: 0;
     }
 
+    /* Stack destination cards in a single column */
     .compare-destination-cards {
         grid-template-columns: 1fr;
     }
 
+    /* Adjust destination image height for mobile screens */
     .compare-destination-card > img {
         height: 210px;
     }
 
+    /* Stack action buttons vertically */
     .compare-actions {
         flex-direction: column;
     }
 
+    /* Make action buttons fill the available width */
     .compare-primary-button,
     .compare-secondary-button {
         width: 100%;

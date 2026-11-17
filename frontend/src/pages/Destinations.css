@@ -1,16 +1,19 @@
 
+/* Main container for the destinations page */
 .destinations-page {
   min-height: 100vh;
   background: #fffaf6;
   padding-bottom: 60px;
 }
 
+/* Hero section at the top of the destinations page */
 .destinations-hero {
   text-align: center;
   padding: 75px 20px 65px;
   background: linear-gradient(135deg, #fff0df, #ffe2c5);
 }
 
+/* Small introductory label above the main heading */
 .destinations-tag {
   color: #c87536;
   font-size: 13px;
@@ -18,18 +21,21 @@
   letter-spacing: 2px;
 }
 
+/* Main heading in the hero section */
 .destinations-hero h1 {
   font-size: clamp(32px, 5vw, 48px);
   color: #34271f;
   margin: 18px 0 12px;
 }
 
+/* Description displayed below the hero heading */
 .destinations-hero > p {
   color: #75675d;
   font-size: 16px;
   line-height: 1.7;
 }
 
+/* Search bar container */
 .destination-search {
   max-width: 550px;
   margin: 28px auto 0;
@@ -42,10 +48,12 @@
   box-shadow: 0 5px 20px #0000000c;
 }
 
+/* Search icon styling */
 .destination-search svg {
   color: #c87536;
 }
 
+/* Search input field */
 .destination-search input {
   width: 100%;
   border: none;
@@ -53,6 +61,7 @@
   font-size: 15px;
 }
 
+/* Shared layout for filter and destination result sections */
 .destination-filter-section,
 .destination-results {
   max-width: 1200px;
@@ -60,6 +69,7 @@
   padding: 0 25px;
 }
 
+/* Layout for filter and results section headings */
 .filter-heading,
 .destination-results-heading {
   display: flex;
@@ -69,22 +79,26 @@
   margin-bottom: 22px;
 }
 
+/* Headings inside the filter and results sections */
 .filter-heading h2,
 .destination-results-heading h2 {
   color: #34271f;
   margin-bottom: 7px;
 }
 
+/* Supporting descriptions below section headings */
 .filter-heading p,
 .destination-results-heading p {
   color: #888;
   margin: 0;
 }
 
+/* Filter section icon */
 .filter-heading > svg {
   color: #c87536;
 }
 
+/* Grid layout containing the destination filter controls */
 .destination-filters {
   display: grid;
   grid-template-columns: 1fr 1fr auto;
@@ -96,18 +110,21 @@
   border-radius: 18px;
 }
 
+/* Individual filter control container */
 .filter-control {
   display: flex;
   flex-direction: column;
   gap: 9px;
 }
 
+/* Labels for filter inputs */
 .filter-control label {
   color: #49392f;
   font-size: 14px;
   font-weight: 600;
 }
 
+/* Dropdown styling for destination filters */
 .filter-control select {
   width: 100%;
   padding: 13px;
@@ -118,6 +135,7 @@
   outline-color: #c87536;
 }
 
+/* Styling for the clear-filter button and empty-state button */
 .clear-filter-btn,
 .no-destinations button {
   background: #c87536;
@@ -129,12 +147,14 @@
   cursor: pointer;
 }
 
+/* Grid displaying destination cards */
 .destination-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 25px;
 }
 
+/* Individual destination card container */
 .destination-card {
   background: white;
   border-radius: 18px;
@@ -143,22 +163,26 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Hover animation for destination cards */
 .destination-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 30px #00000012;
 }
 
+/* Container for the destination image and category label */
 .destination-image-wrapper {
   height: 220px;
   position: relative;
 }
 
+/* Destination image inside each card */
 .destination-image-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+/* Category label positioned over the destination image */
 .destination-category {
   position: absolute;
   top: 14px;
@@ -171,16 +195,19 @@
   font-weight: 700;
 }
 
+/* Content area inside each destination card */
 .destination-card-content {
   padding: 20px;
 }
 
+/* Destination name displayed inside the card */
 .destination-card-content h3 {
   color: #34271f;
   font-size: 21px;
   margin: 0 0 12px;
 }
 
+/* Location information displayed with an icon */
 .destination-location {
   display: flex;
   align-items: center;
@@ -189,6 +216,7 @@
   font-size: 13px;
 }
 
+/* Short description of each destination */
 .destination-description {
   color: #777;
   font-size: 14px;
@@ -196,6 +224,7 @@
   min-height: 70px;
 }
 
+/* Link for navigating to the full destination details page */
 .destination-details-link {
   display: inline-flex;
   align-items: center;
@@ -206,6 +235,7 @@
   font-weight: 700;
 }
 
+/* General message and empty destination result containers */
 .destination-message,
 .no-destinations {
   text-align: center;
@@ -213,33 +243,44 @@
   color: #777;
 }
 
+/* Icon displayed when no destinations are found */
 .no-destinations svg {
   color: #c87536;
 }
 
+/* Heading displayed in the empty destination state */
 .no-destinations h3 {
   color: #34271f;
 }
 
+/* Spacing above the button in the empty destination state */
 .no-destinations button {
   margin-top: 15px;
 }
 
+/* Responsive styles for tablets and medium-sized screens */
 @media (max-width: 850px) {
+
+  /* Display destination cards in two columns */
   .destination-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  /* Display filter controls in two columns */
   .destination-filters {
     grid-template-columns: 1fr 1fr;
   }
 }
 
+/* Responsive styles for mobile screens */
 @media (max-width: 550px) {
+
+  /* Display destination cards in a single column */
   .destination-grid {
     grid-template-columns: 1fr;
   }
 
+  /* Stack all filter controls vertically */
   .destination-filters {
     grid-template-columns: 1fr;
   }
