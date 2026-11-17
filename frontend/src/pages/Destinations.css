@@ -1,0 +1,246 @@
+
+.destinations-page {
+  min-height: 100vh;
+  background: #fffaf6;
+  padding-bottom: 60px;
+}
+
+.destinations-hero {
+  text-align: center;
+  padding: 75px 20px 65px;
+  background: linear-gradient(135deg, #fff0df, #ffe2c5);
+}
+
+.destinations-tag {
+  color: #c87536;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.destinations-hero h1 {
+  font-size: clamp(32px, 5vw, 48px);
+  color: #34271f;
+  margin: 18px 0 12px;
+}
+
+.destinations-hero > p {
+  color: #75675d;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.destination-search {
+  max-width: 550px;
+  margin: 28px auto 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  padding: 15px 20px;
+  border-radius: 14px;
+  box-shadow: 0 5px 20px #0000000c;
+}
+
+.destination-search svg {
+  color: #c87536;
+}
+
+.destination-search input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
+
+.destination-filter-section,
+.destination-results {
+  max-width: 1200px;
+  margin: 45px auto;
+  padding: 0 25px;
+}
+
+.filter-heading,
+.destination-results-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.filter-heading h2,
+.destination-results-heading h2 {
+  color: #34271f;
+  margin-bottom: 7px;
+}
+
+.filter-heading p,
+.destination-results-heading p {
+  color: #888;
+  margin: 0;
+}
+
+.filter-heading > svg {
+  color: #c87536;
+}
+
+.destination-filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 18px;
+  align-items: end;
+  padding: 24px;
+  background: white;
+  border: 1px solid #f0e5dc;
+  border-radius: 18px;
+}
+
+.filter-control {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.filter-control label {
+  color: #49392f;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.filter-control select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #e5d9cf;
+  border-radius: 10px;
+  background: white;
+  font-size: 14px;
+  outline-color: #c87536;
+}
+
+.clear-filter-btn,
+.no-destinations button {
+  background: #c87536;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.destination-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+}
+
+.destination-card {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #f0e5dc;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.destination-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px #00000012;
+}
+
+.destination-image-wrapper {
+  height: 220px;
+  position: relative;
+}
+
+.destination-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.destination-category {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: white;
+  color: #b76b32;
+  padding: 7px 13px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.destination-card-content {
+  padding: 20px;
+}
+
+.destination-card-content h3 {
+  color: #34271f;
+  font-size: 21px;
+  margin: 0 0 12px;
+}
+
+.destination-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #a56b42;
+  font-size: 13px;
+}
+
+.destination-description {
+  color: #777;
+  font-size: 14px;
+  line-height: 1.7;
+  min-height: 70px;
+}
+
+.destination-details-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  color: #c87536;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.destination-message,
+.no-destinations {
+  text-align: center;
+  padding: 45px 20px;
+  color: #777;
+}
+
+.no-destinations svg {
+  color: #c87536;
+}
+
+.no-destinations h3 {
+  color: #34271f;
+}
+
+.no-destinations button {
+  margin-top: 15px;
+}
+
+@media (max-width: 850px) {
+  .destination-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .destination-filters {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 550px) {
+  .destination-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .destination-filters {
+    grid-template-columns: 1fr;
+  }
+}

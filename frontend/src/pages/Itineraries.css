@@ -1,0 +1,293 @@
+
+.itineraries-page {
+    width: min(1120px, 92%);
+    margin: 0 auto;
+    padding: 75px 0 90px;
+}
+
+.itineraries-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.itineraries-heading h1 {
+    font-size: clamp(2.4rem, 5vw, 3.7rem);
+    margin: 12px 0;
+}
+
+.itineraries-heading h1 span {
+    color: var(--primary, #e58b45);
+}
+
+.itineraries-heading p {
+    color: #777;
+}
+
+.itinerary-form-card,
+.saved-itinerary-card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.045);
+}
+
+.itinerary-form-card {
+    margin-bottom: 65px;
+}
+
+.itinerary-section-title,
+.saved-itinerary-top {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.itinerary-section-title h2,
+.saved-itineraries-heading h2 {
+    margin: 0 0 5px;
+}
+
+.itinerary-section-title p,
+.destination-picker > p {
+    color: #777;
+    margin: 0;
+}
+
+.itinerary-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background: #fff1e5;
+    color: #d77b36;
+}
+
+.itinerary-form {
+    display: grid;
+    gap: 20px;
+    margin-top: 28px;
+}
+
+.itinerary-form > label,
+.itinerary-date-grid label {
+    display: grid;
+    gap: 9px;
+    font-weight: 600;
+}
+
+.itinerary-form input:not([type="checkbox"]),
+.itinerary-form textarea {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    font: inherit;
+    background: #fff;
+    color: #333;
+}
+
+.itinerary-form input:focus,
+.itinerary-form textarea:focus {
+    outline: none;
+    border-color: #df955c;
+    box-shadow: 0 0 0 3px rgba(223, 149, 92, 0.12);
+}
+
+.itinerary-form textarea {
+    resize: vertical;
+}
+
+.itinerary-date-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.destination-picker {
+    margin-top: 5px;
+}
+
+.destination-picker h3,
+.saved-destinations strong {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.itinerary-destination-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.itinerary-destination-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.itinerary-destination-option.selected {
+    border-color: #df955c;
+    background: #fff8f2;
+}
+
+.itinerary-destination-option input {
+    accent-color: #d77b36;
+}
+
+.itinerary-destination-option span {
+    display: grid;
+    gap: 4px;
+}
+
+.itinerary-destination-option small {
+    color: #888;
+}
+
+.itinerary-form-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.itinerary-cancel,
+.saved-itinerary-actions button {
+    border: 1px solid #e5e5e5;
+    background: white;
+    border-radius: 9px;
+    padding: 11px 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.itinerary-cancel:hover,
+.saved-itinerary-actions button:hover {
+    background: #fff5ed;
+}
+
+.itinerary-success {
+    color: #237a48;
+    background: #edf8f0;
+    padding: 12px 14px;
+    border-radius: 9px;
+}
+
+.saved-itineraries-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.itinerary-count {
+    background: #fff1e5;
+    color: #bd6a2d;
+    padding: 8px 13px;
+    border-radius: 30px;
+    font-size: 14px;
+}
+
+.saved-itinerary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.saved-itinerary-top {
+    justify-content: space-between;
+}
+
+.saved-itinerary-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.saved-itinerary-card h3 {
+    font-size: 1.35rem;
+    margin: 20px 0 12px;
+}
+
+.saved-itinerary-date,
+.saved-destinations strong {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #777;
+    font-size: 14px;
+}
+
+.saved-itinerary-notes {
+    color: #666;
+    line-height: 1.7;
+}
+
+.saved-destinations {
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    margin-top: 18px;
+}
+
+.saved-destinations ul {
+    padding-left: 22px;
+    color: #666;
+    line-height: 1.8;
+}
+
+.saved-destinations > p {
+    color: #888;
+    font-size: 14px;
+}
+
+.itinerary-empty {
+    text-align: center;
+    padding: 45px 20px;
+    background: #fff;
+    border: 1px dashed #ddd;
+    border-radius: 18px;
+    color: #777;
+}
+
+.itinerary-empty h3 {
+    color: #333;
+}
+
+.itinerary-back-link {
+    display: inline-block;
+    margin-top: 35px;
+    color: #bd6a2d;
+    text-decoration: none;
+}
+
+@media (max-width: 650px) {
+    .itineraries-page {
+        padding-top: 45px;
+    }
+
+    .itinerary-form-card,
+    .saved-itinerary-card {
+        padding: 20px;
+    }
+
+    .itinerary-date-grid,
+    .itinerary-destination-list,
+    .saved-itinerary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .saved-itineraries-heading {
+        align-items: flex-start;
+    }
+}
