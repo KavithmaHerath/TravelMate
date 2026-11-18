@@ -34,7 +34,9 @@ import {
     Camera,
     Sparkles,
     LoaderCircle,
-    CheckCircle2
+    CheckCircle2,
+    Eye, 
+    EyeOff
 } from "lucide-react";
 
 // Import API functions for destinations and user authentication
@@ -825,48 +827,93 @@ function Destinations({ destinations, loading }) {
     );
 }
 
+
 // --------------------------------------------------
 // LOGIN AND REGISTER
 // --------------------------------------------------
 
-// Shared authentication component for login and registration
+// Shared authentication component for both login and registration.
+// The mode prop decides which form should be displayed.
 function AuthPage({ mode, onLogin }) {
 
-    // Navigation function used after successful authentication
+    // React Router navigation function
     const navigate = useNavigate();
 
-    // Determine whether the current page is for registration
+    // Check whether the user is creating a new account
     const isRegister = mode === "register";
 
-    // State variables for authentication form fields
+    // Form field states
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
 
-    // State variables for form loading and error messages
+    // State for showing or hiding password characters
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+    // States for form submission and error feedback
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
-    // Handle login or registration form submission
+    // Handle login and registration form submission
     const handleSubmit = async (e) => {
 
+        // Prevent the browser from refreshing the page
         e.preventDefault();
 
-        // Clear previous errors and activate the loading state
+        // Clear any previous error message
         setError("");
+
+        // Prevent another submission while a request is running
+        if (loading) return;
+
+        // Validate the full name during registration
+        if (isRegister && name.trim().length < 2) {
+            setError("Please enter your full name.");
+            return;
+        }
+
+        // Check that the password contains at least 8 characters
+        if (password.length < 8) {
+            setError("Your password must contain at least 8 characters.");
+            return;
+        }
+
+        // Make sure both passwords match during registration
+        if (isRegister && password !== confirmPassword) {
+            setError("The passwords do not match. Please try again.");
+            return;
+        }
+
+        // Start the loading state
         setLoading(true);
 
         try {
 
-            // Call the appropriate API function based on the page mode
+            // Prepare the correct request for the selected authentication mode
             const result = isRegister
-                ? await registerUser({ name, email, password })
-                : await loginUser({ email, password });
+                ? await registerUser({
+                    name: name.trim(),
+                    email: email.trim().toLowerCase(),
+                    password
+                })
+                : await loginUser({
+                    email: email.trim().toLowerCase(),
+                    password
+                });
 
-            // Save the authentication token and user information
+            // Check that the backend returned a token and user
+            if (!result?.token || !result?.user) {
+                throw new Error(
+                    result?.message || "Authentication failed. Please try again."
+                );
+            }
+
+            // Save the JWT token and user information using the existing API helper
             saveAuth(result.token, result.user);
 
-            // Update the application user state
+            // Update the logged-in user in the main application
             onLogin(result.user);
 
             // Navigate to the dashboard after successful authentication
@@ -874,12 +921,14 @@ function AuthPage({ mode, onLogin }) {
 
         } catch (err) {
 
-            // Display the authentication error message
-            setError(err.message);
+            // Show the error returned by the backend or API service
+            setError(
+                err.message || "Something went wrong. Please try again."
+            );
 
         } finally {
 
-            // Stop the loading state after authentication completes
+            // Stop the loading indicator after the request finishes
             setLoading(false);
 
         }
@@ -889,17 +938,22 @@ function AuthPage({ mode, onLogin }) {
 
         <main className="auth-page">
 
-            {/* Left-side visual section of the authentication page */}
+            {/* -----------------------------------------
+                LEFT SIDE: TRAVEL IMAGE AND INTRODUCTION
+            ------------------------------------------ */}
+
             <div className="auth-visual">
 
+                {/* Travel-themed background image */}
                 <img
                     src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1200&q=85"
-                    alt="Sri Lankan coastal scenery"
+                    alt="Beautiful coastal scenery"
                 />
 
+                {/* Dark overlay to make the text easier to read */}
                 <div className="auth-visual-overlay"></div>
 
-                {/* Introductory message displayed over the image */}
+                {/* Introductory content over the image */}
                 <div className="auth-visual-content">
 
                     <Compass size={38} />
@@ -912,56 +966,64 @@ function AuthPage({ mode, onLogin }) {
 
                     <p>
                         Discover beautiful destinations and make
-                        unforgettable memories.
+                        unforgettable memories with TravelMate.
                     </p>
 
                 </div>
 
             </div>
 
-            {/* Right-side authentication form section */}
+            {/* -----------------------------------------
+                RIGHT SIDE: LOGIN OR REGISTER FORM
+            ------------------------------------------ */}
+
             <div className="auth-form-side">
 
                 <div className="auth-form">
 
-                    {/* TravelMate brand link */}
+                    {/* TravelMate logo linking to the home page */}
                     <Link to="/" className="auth-brand">
-                        <Compass /> TravelMate.
+                        <Compass />
+                        TravelMate.
                     </Link>
 
-                    {/* Heading changes depending on login or registration mode */}
+                    {/* Small heading above the form */}
                     <span className="eyebrow">
                         {isRegister
                             ? "JOIN THE ADVENTURE"
                             : "WELCOME BACK"}
                     </span>
 
+                    {/* Main form heading */}
                     <h1>
                         {isRegister
                             ? "Create your account"
                             : "Welcome back!"}
                     </h1>
 
+                    {/* Supporting description */}
                     <p>
                         {isRegister
-                            ? "Start exploring Sri Lanka with TravelMate."
+                            ? "Create your account and start exploring Sri Lanka."
                             : "Sign in to continue your travel journey."}
                     </p>
 
                     {/* Authentication form */}
                     <form onSubmit={handleSubmit}>
 
-                        {/* Name field is displayed only during registration */}
+                        {/* Full name field appears only during registration */}
                         {isRegister && (
 
-                            <label>
+                            <label htmlFor="auth-name">
                                 Full name
 
                                 <input
+                                    id="auth-name"
                                     type="text"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
-                                    placeholder="Enter your name"
+                                    placeholder="Enter your full name"
+                                    autoComplete="name"
                                     minLength={2}
                                     maxLength={100}
                                     required
@@ -971,61 +1033,161 @@ function AuthPage({ mode, onLogin }) {
 
                         )}
 
-                        {/* Email input field */}
-                        <label>
+                        {/* Email address field */}
+                        <label htmlFor="auth-email">
                             Email address
 
                             <input
+                                id="auth-email"
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="you@example.com"
+                                autoComplete="email"
                                 required
                             />
 
                         </label>
 
-                        {/* Password input field */}
-                        <label>
+                        {/* Password field with show/hide control */}
+                        <label htmlFor="auth-password">
                             Password
 
-                            <input
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                placeholder="At least 8 characters"
-                                minLength={8}
-                                required
-                            />
+                            <div className="auth-password-field">
+
+                                <input
+                                    id="auth-password"
+                                    type={showPassword ? "text" : "password"}
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    placeholder="Enter your password"
+                                    autoComplete={
+                                        isRegister
+                                            ? "new-password"
+                                            : "current-password"
+                                    }
+                                    minLength={8}
+                                    required
+                                />
+
+                                {/* Button to show or hide the password */}
+                                <button
+                                    type="button"
+                                    className="password-toggle"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    aria-label={
+                                        showPassword
+                                            ? "Hide password"
+                                            : "Show password"
+                                    }
+                                >
+                                    {showPassword
+                                        ? <EyeOff size={19} />
+                                        : <Eye size={19} />}
+                                </button>
+
+                            </div>
 
                         </label>
 
-                        {/* Display authentication errors when available */}
+                        {/* Confirm password field appears only during registration */}
+                        {isRegister && (
+
+                            <label htmlFor="auth-confirm-password">
+                                Confirm password
+
+                                <div className="auth-password-field">
+
+                                    <input
+                                        id="auth-confirm-password"
+                                        type={
+                                            showConfirmPassword
+                                                ? "text"
+                                                : "password"
+                                        }
+                                        value={confirmPassword}
+                                        onChange={(e) =>
+                                            setConfirmPassword(e.target.value)
+                                        }
+                                        placeholder="Enter your password again"
+                                        autoComplete="new-password"
+                                        minLength={8}
+                                        required
+                                    />
+
+                                    {/* Button to show or hide the confirmation password */}
+                                    <button
+                                        type="button"
+                                        className="password-toggle"
+                                        onClick={() =>
+                                            setShowConfirmPassword(
+                                                !showConfirmPassword
+                                            )
+                                        }
+                                        aria-label={
+                                            showConfirmPassword
+                                                ? "Hide confirmation password"
+                                                : "Show confirmation password"
+                                        }
+                                    >
+                                        {showConfirmPassword
+                                            ? <EyeOff size={19} />
+                                            : <Eye size={19} />}
+                                    </button>
+
+                                </div>
+
+                            </label>
+
+                        )}
+
+                        {/* Password length guidance during registration */}
+                        {isRegister && (
+                            <p className="auth-password-hint">
+                                Use at least 8 characters for your password.
+                            </p>
+                        )}
+
+                        {/* Display authentication errors */}
                         {error && (
-                            <div className="form-error">
+                            <div
+                                className="form-error"
+                                role="alert"
+                            >
                                 {error}
                             </div>
                         )}
 
                         {/* Submit button with loading feedback */}
                         <button
+                            type="submit"
                             className="auth-submit"
                             disabled={loading}
                         >
 
-                            {loading
-                                ? "Please wait..."
-                                : isRegister
-                                    ? "Create account"
-                                    : "Sign in"}
+                            {loading ? (
+                                <>
+                                    <LoaderCircle
+                                        size={18}
+                                        className="spin"
+                                    />
+                                    Please wait...
+                                </>
+                            ) : (
+                                <>
+                                    {isRegister
+                                        ? "Create account"
+                                        : "Sign in"}
 
-                            {!loading && <ArrowRight size={18} />}
+                                    <ArrowRight size={18} />
+                                </>
+                            )}
 
                         </button>
 
                     </form>
 
-                    {/* Link to switch between login and registration */}
+                    {/* Link for switching between login and registration */}
                     <div className="auth-switch">
 
                         {isRegister
@@ -1040,10 +1202,13 @@ function AuthPage({ mode, onLogin }) {
 
                     </div>
 
-                    {/* Security message displayed below the form */}
+                    {/* Security information below the form */}
                     <div className="auth-security">
+
                         <ShieldCheck size={16} />
+
                         Your account is protected.
+
                     </div>
 
                 </div>
@@ -1053,7 +1218,6 @@ function AuthPage({ mode, onLogin }) {
         </main>
 
     );
-
 }
 
 // --------------------------------------------------

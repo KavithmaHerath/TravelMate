@@ -26,40 +26,17 @@ TravelMate brings essential travel discovery and planning features together in o
 ## ✨ Key Features
 
 ### 🗺️ Destination Discovery
-- Explore tourist destinations across Sri Lanka.
-- Browse destination information and descriptions.
-- View detailed information about individual destinations.
-- Discover destinations by category and district.
 
 ### 🔍 Search & Filtering
-- Search destinations by name and location.
-- Filter destinations by categories.
-- Filter destinations by district.
-- Easily find destinations based on travel interests.
 
 ### ⚖️ Destination Comparison
-- Select and compare two destinations.
-- View destination information side by side.
-- Make more informed travel decisions.
 
 ### 📅 Personalized Itinerary Management
-- Create personal travel itineraries.
-- Add multiple destinations to an itinerary.
-- View and manage saved itineraries.
-- Edit and delete existing itineraries.
-- Retain itinerary information in the database.
 
 ### 🔐 User Authentication
-- User registration and login.
-- Authentication and protected pages.
-- Personalized user dashboard.
-- Logout functionality.
 
 ### 📱 User Interface
-- Responsive page layouts.
-- Navigation between application sections.
-- Interactive destination cards.
-- User-friendly travel discovery experience.
+
 
 ## 🛠️ Technologies Used
 
@@ -125,7 +102,7 @@ TravelMate/
 └── Travelmate.png
 ```
 
-*Note: The structure above illustrates the main project organization. Some folders may differ depending on the actual implementation.*
+*Note: This structure shows the main project files and folders. Additional files may be present in the actual implementation.*
 
 ## ⚙️ Installation & Setup
 
@@ -161,7 +138,7 @@ Install dependencies:
 npm install
 ```
 
-Create a `.env` file in the backend directory and configure your MySQL connection and application settings.
+Create a `.env` file inside the backend directory and configure your database and application settings.
 
 Example configuration:
 
@@ -170,10 +147,11 @@ PORT=5000
 DB_HOST=localhost
 DB_USER=your_mysql_username
 DB_PASSWORD=your_mysql_password
-DB_NAME=travelmate
+DB_NAME=travelmate_db
+JWT_SECRET=your_secret_key
 ```
 
-Use the actual environment variable names required by your backend configuration.
+*Use the exact environment variable names expected by your backend configuration.*
 
 Create the required MySQL database and tables before starting the application.
 
@@ -227,8 +205,6 @@ The database manages information such as:
 
 ## 🚀 Future Enhancements
 
-- Interactive maps and navigation.
-- Destination reviews and ratings.
 - Weather information for destinations.
 - More destination photographs and travel guides.
 - Advanced itinerary recommendations.
@@ -244,4 +220,3 @@ TravelMate – Travel Planning & Destination Discovery Platform
 <p align="center">
   <strong>TravelMate – Discover Sri Lanka, One Destination at a Time.</strong>
 </p>
-
