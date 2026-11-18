@@ -38,6 +38,7 @@ TravelMate brings essential travel discovery and planning features together in o
 ### 📱 User Interface
 
 
+
 ## 🛠️ Technologies Used
 
 | Technology | Purpose |
